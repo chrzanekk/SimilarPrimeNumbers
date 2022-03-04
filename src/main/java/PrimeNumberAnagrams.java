@@ -4,11 +4,11 @@ public class PrimeNumberAnagrams {
     public static int primeNumberAnagramMaxGroupSize(int range) {
         List<String> primeNumbers = primeNumbers(range);
         List<String> allAnagrams = findAnagrams(primeNumbers);
-        List<List<String>> groupedAnagrams = groupAnagramsUsingHashMaps(allAnagrams);
+        List<List<String>> groupedAnagrams = groupAnagrams(allAnagrams);
         return findMaxSize(groupedAnagrams);
     }
 
-//to do zoptymalizowania
+//here is place to improve/change
     public static List<String> findAnagrams(List<String> primeNumbers) {
         Set<String> allAnagrams = new HashSet<>();
 
@@ -38,20 +38,6 @@ public class PrimeNumberAnagrams {
         return primes;
     }
 
-    //    do optymalizacji
-    public static boolean haveSameDigits(String firstNumber, String secondNumber) {
-        boolean status;
-        if (firstNumber.length() != secondNumber.length()) {
-            status = false;
-        } else {
-            char[] arrayFirstNumber = firstNumber.toLowerCase().toCharArray();
-            char[] arraySecondNumber = secondNumber.toLowerCase().toCharArray();
-            Arrays.sort(arrayFirstNumber);
-            Arrays.sort(arraySecondNumber);
-            status = Arrays.equals(arrayFirstNumber, arraySecondNumber);
-        }
-        return status;
-    }
 
     public static boolean isAnagram(String firstNumber, String secondNumber) {
         Hashtable<Character, Integer> hashtable = new Hashtable<>();
@@ -75,28 +61,8 @@ public class PrimeNumberAnagrams {
     }
 
 
-    public static List<List<String>> groupAnagrams(List<String> anagrams) {
-        List<List<String>> result = new ArrayList<>();
-        HashMap<String, List<String>> map = new HashMap<>();
 
-        for (String str : anagrams) {
-            char[] chArr = str.toCharArray();
-            Arrays.sort(chArr);
-            String key = new String(chArr);
-
-            if (map.containsKey(key)) {
-                map.get(key).add(str);
-            } else {
-                List<String> stringList = new ArrayList<>();
-                stringList.add(str);
-                map.put(key, stringList);
-            }
-        }
-        result.addAll(map.values());
-        return result;
-    }
-
-    public static List<List<String>> groupAnagramsUsingHashMaps(List<String> primeNumbers) {
+    public static List<List<String>> groupAnagrams(List<String> primeNumbers) {
         HashMap<HashMap<Character, Integer>, List<String>> map = new HashMap<>();
         for (String str : primeNumbers) {
             HashMap<Character, Integer> tempMap = new HashMap<>();
@@ -135,49 +101,6 @@ public class PrimeNumberAnagrams {
         return size;
     }
 
-    private static int countDigits(int n) {
-        if (n < 100000) {
-            // 5 or less
-            if (n < 100) {
-                // 1 or 2
-                if (n < 10)
-                    return 1;
-                else
-                    return 2;
-            } else {
-                // 3 or 4 or 5
-                if (n < 1000)
-                    return 3;
-                else {
-                    // 4 or 5
-                    if (n < 10000)
-                        return 4;
-                    else
-                        return 5;
-                }
-            }
-        } else {
-
-            if (n < 10000000) {
-
-                if (n < 1000000)
-                    return 6;
-                else
-                    return 7;
-            } else {
-
-                if (n < 100000000)
-                    return 8;
-                else {
-
-                    if (n < 1000000000)
-                        return 9;
-                    else
-                        return 10;
-                }
-            }
-        }
-    }
 
     private static int borderFind(int number) {
         int border;

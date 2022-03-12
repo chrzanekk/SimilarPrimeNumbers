@@ -1,19 +1,12 @@
-import java.util.List;
-
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println(PrimeNumberAnagrams.primeNumberAnagramMaxGroupSize(100));
-//        2
-        System.out.println(PrimeNumberAnagrams.primeNumberAnagramMaxGroupSize(1000));
-//        4
-        System.out.println(PrimeNumberAnagrams.primeNumberAnagramMaxGroupSize(10000));
-//        11
-        System.out.println(PrimeNumberAnagrams.primeNumberAnagramMaxGroupSize(100000));
+        System.out.println("------ONE");
+        System.out.println(PrimeNumberAnagrams.primeNumberAnagramMaxGroupSizeMethodOne(1000000));
 //        39
-        System.out.println(PrimeNumberAnagrams.primeNumberAnagramMaxGroupSize(1000000));
-//        148
-
+        System.out.println("------TWO");
+        System.out.println(PrimeNumberAnagrams.primeNumberAnagramMaxGroupSizeMethodTwo(1000000));
+//        39
     }
 }
 
